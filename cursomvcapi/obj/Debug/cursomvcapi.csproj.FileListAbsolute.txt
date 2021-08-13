@@ -93,3 +93,7 @@ C:\Users\Mario Segura\source\repos\CursoMvcApi\cursomvcapi\obj\Debug\cursomvcapi
 C:\Users\Mario Segura\source\repos\CursoMvcApi\cursomvcapi\obj\Debug\cursomvcapi.csproj.CopyComplete
 C:\Users\Mario Segura\source\repos\CursoMvcApi\cursomvcapi\obj\Debug\cursomvcapi.dll
 C:\Users\Mario Segura\source\repos\CursoMvcApi\cursomvcapi\obj\Debug\cursomvcapi.pdb
+C:\Users\Mario Segura\source\repos\CursoMvcApi\cursomvcapi\bin\EntityFramework.dll
+C:\Users\Mario Segura\source\repos\CursoMvcApi\cursomvcapi\bin\EntityFramework.SqlServer.dll
+C:\Users\Mario Segura\source\repos\CursoMvcApi\cursomvcapi\bin\EntityFramework.xml
+C:\Users\Mario Segura\source\repos\CursoMvcApi\cursomvcapi\bin\EntityFramework.SqlServer.xml

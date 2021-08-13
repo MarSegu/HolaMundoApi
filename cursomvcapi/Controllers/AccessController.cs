@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using cursomvcapi.Models.WS;
+using cursomvcapi.Models;
 
 namespace cursomvcapi.Controllers
 {
@@ -16,6 +17,42 @@ namespace cursomvcapi.Controllers
             Reply oR = new Reply();
             oR.result = 1;
             oR.message = "Hello world MVC Api";
+            return oR;
+        }
+
+        [HttpPost]
+        public Reply Login([FromBody]AccessViewModel model)
+        {
+            Reply oR = new Reply();
+            oR.result = 0;
+            try
+            {
+                using (cursomvcapiEntities db = new cursomvcapiEntities())
+                {
+                    var lst = db.usuario.Where(d=>d.email == model.email && d.password == model.password && d.idEstatus ==1);
+
+                    if (lst.Count() > 0)
+                    {
+                        oR.result = 1;
+                        oR.data = Guid.NewGuid().ToString();
+
+                        usuario oUser = lst.First();
+                        oUser.token = (string)oR.data;
+                        db.Entry(oUser).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+
+                    }
+                    else
+                    {
+                        oR.message = "Datos erroneos";
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                oR.result = 500;
+                oR.message = "Ocurrio un error, estamos corrigiendo";
+            }
             return oR;
         }
     }
