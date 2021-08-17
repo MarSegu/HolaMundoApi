@@ -12,5 +12,15 @@
   </EntityType>
   <EntityContainer Name="cursomvcapiEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="usuario" EntityType="Self.usuario" />
+    <EntitySet Name="animal" EntityType="cursomvcapiModel.animal" />
   </EntityContainer>
+  <EntityType Name="animal">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idState" Type="Int32" />
+    <Property Name="patas" Type="Int32" />
+  </EntityType>
 </Schema>

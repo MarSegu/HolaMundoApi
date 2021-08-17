@@ -26,5 +26,6 @@ namespace cursomvcapi.Models
         }
     
         public virtual DbSet<usuario> usuario { get; set; }
+        public virtual DbSet<animal> animal { get; set; }
     }
 }

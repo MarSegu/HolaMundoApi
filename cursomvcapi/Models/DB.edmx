@@ -4,7 +4,16 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="cursomvcapiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="cursomvcapiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="animal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="idState" Type="int" />
+          <Property Name="patas" Type="int" />
+        </EntityType>
         <EntityType Name="usuario">
           <Key>
             <PropertyRef Name="Id" />
@@ -16,10 +25,10 @@
           <Property Name="token" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityContainer Name="cursomvcapiModelStoreContainer">
+          <EntitySet Name="animal" EntityType="Self.animal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="cursomvcapiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -35,7 +44,17 @@
         </EntityType>
         <EntityContainer Name="cursomvcapiEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <EntitySet Name="animal" EntityType="cursomvcapiModel.animal" />
         </EntityContainer>
+        <EntityType Name="animal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idState" Type="Int32" />
+          <Property Name="patas" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -50,6 +69,16 @@
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="idEstatus" ColumnName="idEstatus" />
                 <ScalarProperty Name="token" ColumnName="token" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="animal">
+            <EntityTypeMapping TypeName="cursomvcapiModel.animal">
+              <MappingFragment StoreEntitySet="animal">
+                <ScalarProperty Name="patas" ColumnName="patas" />
+                <ScalarProperty Name="idState" ColumnName="idState" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
